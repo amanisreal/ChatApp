@@ -1,0 +1,37 @@
+.homeDisplayCardContainer{
+    width: 24vw;
+    height: 50vh;
+    border-bottom: 5px solid black;
+}
+
+.homeDisplayCardHeader{
+    display: flex;
+    padding: 10px;
+    border-bottom: 2px solid rgb(193, 193, 193);
+}
+
+.userImage{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.homeDisplayCardBody{
+    text-align: center;
+    height: 65%;
+}
+
+#bodyImageByUser{
+    object-fit: contain;
+}
+
+.cardLikeAndComment{
+    list-style: none;
+    display: flex;
+    object-fit: cover;
+}
+
+.commonLIOfCardFooter{
+    padding-right: 10px;
+}

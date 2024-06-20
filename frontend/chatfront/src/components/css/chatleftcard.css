@@ -1,0 +1,16 @@
+.forFlexChatLeft{
+    display: flex;
+}
+
+.chatLeftContainer{
+    display: flex;
+    border: 2px solid red;
+    padding: 12px;
+}
+
+.imgOfOT{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}

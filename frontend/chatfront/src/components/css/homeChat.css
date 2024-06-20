@@ -1,0 +1,64 @@
+
+
+
+.homeChatContainer{
+    width: 90vw;
+   margin: auto auto;
+}
+
+/* main body css */
+.homeChatBody{
+    display: flex;
+    border: 2px solid red;
+}
+
+
+.homeBodySide{
+    flex: 0.5;
+    height: 87vh;
+    padding-left: 20px;
+    background-color: rgb(93, 96, 95);
+}
+
+.sideSearhBox{
+    width: 90%;
+    height: 35px;
+    border-radius: 20px;
+    border: 2px solid rgb(150, 148, 148);
+}
+
+.userChatListUl{
+    list-style: none;
+    margin-left: -25px;
+    margin-top: 10px;
+}
+
+.userChatListLi{
+    width: 90%;
+    padding: 10px;
+    border: 2px solid rgb(181, 179, 179);
+    border-radius: 22px;
+}
+
+.homeBodyMain{
+    flex: 1;
+    text-align: right;
+    opacity: 0;
+}
+
+.seeChats{
+    height: 80vh;
+}
+
+.footer{
+    display: flex;
+    margin: 0 20px;
+}
+
+.commonFooter1{
+    flex:1;
+}
+
+.commonFooter2{
+    flex:0.15
+}

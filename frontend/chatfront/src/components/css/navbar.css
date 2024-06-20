@@ -1,0 +1,28 @@
+.navbarContainer{
+    background-color: #575555;
+    font-size: 20px;
+}
+
+.navbarUl{
+    list-style: none;
+    display: flex;
+}
+
+.chatAppLi{
+    flex:1;
+}
+
+.commonLi{
+    padding: 10px;
+}
+
+.commonLi:hover{
+    cursor: pointer;
+}
+
+.userSearchInput{
+    border-radius: 12px;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+}

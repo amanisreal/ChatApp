@@ -1,0 +1,29 @@
+.homeContainerForNavBar{
+    display: inline;
+}
+
+
+.homeContainer{
+    display: flex;
+    margin-left: 400px;
+}
+
+.navBarContainer{
+    position: fixed;
+    width: 100%;
+}
+
+.postsContainer{
+    border: 2px solid rgb(45, 41, 41);
+    flex: 0.37;
+    margin-left: 100px;
+    margin-top: 7%;
+    overflow-y: hidden;
+}
+
+.aboutContainer{
+    position: fixed;
+    border: 2px solid red;
+    top: 12%;
+    left: 80%;
+}
