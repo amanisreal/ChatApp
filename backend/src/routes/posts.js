@@ -17,5 +17,11 @@ router.get('/posts', async(req, res) => {
 
 //post users
 router.post('/post', auth, async(req, res) => {
-    console.log()
+    try{
+        const newPost = new Post(req.body);
+        await newPost.save();
+        res.send(newPost)
+    }catch(e){
+        res.status(400).send(e);
+    }
 })

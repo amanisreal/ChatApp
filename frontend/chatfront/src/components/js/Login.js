@@ -13,34 +13,44 @@ function Login() {
   const whenOnSubmit = async (e) => {
     e.preventDefault();
     console.log(email, password);
-    // const response =  fetch('http://localhost:3001/user/login', {
-     
-    //   method: 'POST',
-    //   header:{
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({email: email, password: password})
-    // })
-    // console.log(response)
-    //const json = await response.json();
-    //console.log(json)
-
+    
     //check why not working with fetch
 
-    //with axios
-    axios({
-      url:"http://localhost:3001/user/login",
-      method: "POST",
-      data:{
-        email: email,
+    // //with axios
+    // const response = axios({
+    //   url:"http://localhost:3001/user/login",
+    //   method: "POST",
+    //   data:{
+    //     email: email,
+    //     password: password
+    //   }
+    // }, )
+
+    axios.post('http://localhost:3001/user/login', {
+      email: email,
         password: password
-      }
     }).then(function(response){
+      console.log(response);
       if(response.status === 200){
-        localStorage.setItem('token', response.data.token);
-        navigate('/')
+            localStorage.setItem('token', response.data.token);
+            navigate('/')
       }
     })
+    .catch(function(error){
+      console.log(error);
+      alert('UserName and password is incorrect')
+    })
+    //console.log(response)
+    // .then(function(response){
+    //   console.log(response)
+    //   if(response.status === 200){
+    //     localStorage.setItem('token', response.data.token);
+    //     navigate('/')
+    //   }
+    //   else if(response.status === 400){
+    //     alert('Something went wrong');
+    //   }
+    // })
   }
 
   const onEmmailChange = (e) => {

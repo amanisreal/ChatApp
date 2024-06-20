@@ -75,7 +75,7 @@ userSchema.statics.findByCredentials = async function (email, password){
     }
     const isMatch = await bcrypt.compare(password, user.password);
     if(!isMatch){
-        throw new Error('Something went wornd from yourside');
+        throw new Error('Something went worng from yourside');
     } 
     return user;
 }

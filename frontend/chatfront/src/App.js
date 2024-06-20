@@ -8,6 +8,7 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import HomeDisplayCard from './components/js/HomeDisplayCard';
 import Createpost from './components/js/createPost';
 import ChatState from './context/chatState';
+import Chatings from './components/js/Chatings';
 
 const router = createBrowserRouter([
   {
@@ -33,7 +34,13 @@ const router = createBrowserRouter([
   {
     path: '/chat',
     element: <HomeChat/>
+  },
+
+  {
+    path: '/chat/chatings',
+    element: <Chatings/>
   }
+
 ])
 
 function App() {

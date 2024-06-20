@@ -4,6 +4,7 @@ import ChatLeftCard from './ChatLeftCard';
 import axios from 'axios';
 import '../css/homeChat.css'
 import chatContext from '../../context/chatContext';
+import ChatOBJ from './ChatOBJ';
 
 function HomeChat() {
   const context = useContext(chatContext)
@@ -14,12 +15,9 @@ function HomeChat() {
     console.log(localStorage.getItem('token'))
     
     getUsers()
-  }, [])
+  }, [1])
 
-  const onUserClick = (e) => {
-    console.log('cliekd me')
-    console.log(e);
-  }
+  
 
   
 
@@ -39,15 +37,15 @@ function HomeChat() {
                 <ul className='userChatListUl'>
                   {console.log(users)}
                   {users.map( (u, i) => {
-                   console.log(u.chats[i], i)
+                   console.log(u, i)
 
-                    return <ChatLeftCard key={i} user = {u.chats[i]}/>
+                    return <ChatLeftCard key={i} user = {u}/>
                   })}
                 </ul>
               </div>
             </div>
 
-            
+           
         </div>
     </div>
   )

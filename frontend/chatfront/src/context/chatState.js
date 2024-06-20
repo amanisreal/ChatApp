@@ -7,6 +7,23 @@ const ChatState = (props) => {
     
     const [users, setUsers] = useState([]);
     const [displayuser, setDisplayUser] = useState([])
+    const [currUser, setCurrUsre] = useState('');
+
+    //get the currentUse
+    const getCurrUser = async () => {
+        axios({
+            url:`${url}/user/me`,
+            method: "GET",
+            headers:{
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            }
+        }).then(function(response){
+            console.log(response.data)
+            if(response.status === 200){
+              setCurrUsre(response.data)
+            }
+          })
+    }
 
     //get all the users
     const getUsers = async () => {
@@ -26,7 +43,7 @@ const ChatState = (props) => {
     }
 
     return(
-        <chatContext.Provider value={{users, getUsers, displayuser}}>
+        <chatContext.Provider value={{users, getUsers, displayuser, currUser, getCurrUser}}>
             {props.children}
         </chatContext.Provider>
     )

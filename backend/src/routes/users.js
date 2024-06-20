@@ -90,7 +90,10 @@ res.set('Access-Control-Allow-Origin', '*');
         console.log(user, token);
         res.send({user, token});
     }catch(e){
-        res.send(e);
+        if(e == 'Something went worng from yourside'){
+            res.status(400).send(e);
+        }
+        res.status(404).send(e);
     }
 })
 

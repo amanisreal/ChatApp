@@ -1,14 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import '../css/createpost.css'
 import { Cloudinary } from '@cloudinary/url-gen';
 import { auto } from '@cloudinary/url-gen/actions/resize';
 import { autoGravity } from '@cloudinary/url-gen/qualifiers/gravity';
 import { AdvancedImage } from '@cloudinary/react';
+import axios from "axios"
+import chatContext from '../../context/chatContext';
 
 function CreatePost() {
 
     const [img, setImg] = useState('');
     const [caption, setCaption] = useState('');
+    const [ugl, setIMURL] = useState('');    
+    const context = useContext(chatContext)
+    const {currUser, getCurrUser} = context
 
     const onImageChange = (event) => {
         load(event);
@@ -30,23 +35,41 @@ function CreatePost() {
         }
     }
 
-    const postOnCloud = (imga) => {
-        const cld = new Cloudinary({ cloud: { cloudName: 'dk2ryokro' } });
-  
-        // Use this sample image or upload your own via the Media Explorer
-        const img = cld
-                .image(imga)
-                .format('auto') // Optimize delivery by resizing and applying auto-format and auto-quality
-                .quality('auto')
-                .resize(auto().gravity(autoGravity()).width(500).height(500)); // Transform the image: auto-crop to square aspect_ratio
+    const postOnCloud = async (imga) => {
+        // cloudinary.config({ 
+        //     cloud_name: 'dk2ryokro', 
+        //     api_key: '385199864772986', 
+        //     api_secret: 'w5sO-53oImPC_Al-hDJhDjPzoUE' // Click 'View Credentials' below to copy your API secret
+        // });
         
-                console.log(<AdvancedImage cldImg={img}/>)
-        }
+        // // Upload an image
+        //  const uploadResult = await cloudinary.uploader
+        //    .upload(
+        //        'http://res.cloudinary.com/demo/image/upload/getting-started/shoes.jpg', {
+        //            public_id: 'shoes',
+        //        }
+        //    )
+        //    .catch((error) => {
+        //        console.log(error);
+        //    });
+
+        //    setIMURL(uploadResult)
+        
+        // console.log(uploadResult);
+       
+    }
+
 
     const shareMyPost = () => {
         console.log(caption, img);
-        //yaha meri api hut karuga
-        //user ki id lagegi
+        getCurrUser();
+        axios.post('http://localhost:3001/post', {
+            imageFile: ugl,
+            caption: caption,
+            from: currUser._id
+        }).then(function(response){
+            console.log(response)
+        })   
     }
 
   return (
@@ -65,7 +88,7 @@ function CreatePost() {
             <textarea value={caption} placeholder="Caption" onChange={onCaptionChange} type="text" ></textarea>
          </div>
 
-         <button className='btn btn-primary'>Post</button>
+         <button className='btn btn-primary' onClick={shareMyPost}>Post</button>
 
      </div>
   )
