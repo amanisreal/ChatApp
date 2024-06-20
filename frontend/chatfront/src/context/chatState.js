@@ -8,6 +8,23 @@ const ChatState = (props) => {
     const [users, setUsers] = useState([]);
     const [displayuser, setDisplayUser] = useState([])
     const [currUser, setCurrUsre] = useState('');
+    const [posts, setAllPosts] = useState([])
+    
+    //get all the posts
+    const getAllPost = async () => {
+        axios({
+            url:`${url}/posts`,
+            method: 'GET',
+            headers:{
+                "Authorization": 'Bearer ' + localStorage.getItem('token')
+            }
+        }).then(function(response){
+            console.log(response.data)
+            if(response.status === 200){
+              setAllPosts(response.data)
+            }
+          })
+    }
 
     //get the currentUse
     const getCurrUser = async () => {
@@ -43,7 +60,7 @@ const ChatState = (props) => {
     }
 
     return(
-        <chatContext.Provider value={{users, getUsers, displayuser, currUser, getCurrUser}}>
+        <chatContext.Provider value={{users, getUsers, displayuser, currUser, getCurrUser, posts, getAllPost}}>
             {props.children}
         </chatContext.Provider>
     )

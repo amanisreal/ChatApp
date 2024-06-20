@@ -16,7 +16,7 @@ router.get('/posts', async(req, res) => {
 
 
 //post users
-router.post('/post', auth, async(req, res) => {
+router.post('/post',  async(req, res) => {
     try{
         const newPost = new Post(req.body);
         await newPost.save();
@@ -25,3 +25,5 @@ router.post('/post', auth, async(req, res) => {
         res.status(400).send(e);
     }
 })
+
+module.exports = router;

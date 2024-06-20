@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "../css/chatleftcard.css"
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
@@ -6,8 +6,10 @@ import { Link } from 'react-router-dom';
 
 function ChatLeftCard(props) {
   const [currUser, setCuUser] = useState({})
-  console.log(props)
-  {setCuUser(props)}
+  console.log(props);
+  useEffect(() => {
+    setCuUser(props)
+  }, [])
   return (
     <div className='chatLeftContainer'>
     

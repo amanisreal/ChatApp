@@ -41,7 +41,10 @@ function SignUp() {
                 localStorage.setItem('token', response.data.token);
                 navigate('/')
             }
-        })
+        }).catch(function(error){
+            console.log(error);
+            alert('user Aready exists')
+          })
     }
 
   return (

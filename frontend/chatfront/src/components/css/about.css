@@ -1,0 +1,13 @@
+.aboutContainer{
+    height: 40vh;
+    width: 20vw;
+    margin-left: -240px;
+}
+
+.aboutImage{
+    text-align: center;
+}
+
+.aboutDetail{
+    padding: 20px;
+}

@@ -1,14 +1,18 @@
-import React from 'react'
+import React, {useContext, useEffect} from 'react'
 import NavBar from "./NavBar"
 import HomeDisplayCard from './HomeDisplayCard'
 import '../css/home.css';
+import About from './About';
+import chatContext from '../../context/chatContext';
 
 function Home(props) {
+  const context = useContext(chatContext)
+  const {posts, getAllPost} = context
 
   //get all updates
-  const getUpdates = async () => {
-    
-  }
+  useEffect(() => {
+    getAllPost();
+  }, [])
 
 
   return (
@@ -23,15 +27,14 @@ function Home(props) {
         {/* props.posts.filter((post) => {
           return <HomeDisplayCard/>
         }) */}
-        <HomeDisplayCard />
-        <HomeDisplayCard/>
-        <HomeDisplayCard/>
-        <HomeDisplayCard/>
-        <HomeDisplayCard/>
+        {posts.map((post) => {
+          console.log(post)
+          return <HomeDisplayCard />
+        })}
        </div>
 
        <div className='aboutContainer'>
-abour
+          <About/>
        </div>
     </div>
     </div>

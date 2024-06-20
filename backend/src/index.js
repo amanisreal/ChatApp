@@ -2,6 +2,7 @@ const express = require('express');
 const userRouter = require('./routes/users');
 const chatRouter = require('./routes/chats');
 const msgRouter = require('./routes/messages');
+const postRouter = require('./routes/posts')
 const socketio = require('socket.io')
 const http = require('http')
 const cors = require('cors');
@@ -20,7 +21,8 @@ app.use(function(req, res, next) {
 app.use(userRouter);
 app.use(chatRouter);
 app.use(msgRouter)
-// app.use(cors());
+app.use(postRouter)
+app.use(cors());
 
 const corseOption = {
     origin: '*',
